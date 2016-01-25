@@ -1,0 +1,36 @@
+name:                forthright
+version:             0.1.0.0
+synopsis:            a toy forth-like language
+description:         Please see README.md
+license:             BSD3
+license-file:        LICENSE
+author:              Pat Hickey
+maintainer:          pat@moreproductive.org
+copyright:           2016 Pat Hickey
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Forthright.Instruction
+                     , Forthright.Machine
+  build-depends:       base >= 4.7 && < 5
+                     , containers
+  default-language:    Haskell2010
+
+test-suite forthright-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  other-modules:       Forthright.MachineSpec
+  build-depends:       base
+                     , containers
+                     , hspec
+                     , forthright
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/pchickey/forthright
